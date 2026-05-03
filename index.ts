@@ -1,39 +1,72 @@
-// 0 ?? null -> 0
-// 0 || null -> null
-
-
-// zod -> zod is a runtime type checker
-
-
-
 //! Interfaces
-//? -->  
 
+//? --> We can implement interfaces as class
 
-
-
-
-
-
-import express from 'express'
-
-const app = express();
-
-app.use(express.json());
-
-interface SignInput {
-    username: string,
-    password: string
+interface Person {
+    name: string;
+    age: number;
+    greet(phrase: string): void;
 }
-app.post("/signup", (req, res) => {
-    const body: SignInput = req.body; 
-})
+
+class Manager implements Person {
+     name: string;
+     age: number;
+
+     constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+     }
+  
+     greet(phrase: string): void {
+         console.log("Hii there, sir", phrase);
+     }
+
+}
 
 
-app.listen(3000, () => {
-    console.log("Running , ok!")
-})
+
+class Employee implements Person {
+     name: string;
+     age: number;
+
+     constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+     }
+  
+     greet(phrase: string): void {
+         console.log("Hat ***", phrase);
+     }
+
+}
 
 
-//! Here if i put types using typescript then why we need zod for type validation???
-//? --> Okk, so ts checks types only in compile time and the zod checks types in runtime.
+
+
+
+
+
+
+
+// interface User {
+//     firstName: string;
+//     lastName: string;
+//     email: string;
+//     age: number;
+// }
+
+
+// function isLegel(user: User): boolean {
+//     if (user.age > 18) return true;
+//     return false;
+// }
+
+
+// let user1: User = {
+//     firstName: "Raj",
+//     lastName: "Kumar",
+//     email: "Rah@gmail.com",
+//     age: 20
+// }
+
+// console.log(isLegel(user1));
