@@ -1,72 +1,46 @@
-//! Interfaces
+//! types
 
-//? --> We can implement interfaces as class
-
-interface Person {
-    name: string;
-    age: number;
-    greet(phrase: string): void;
-}
-
-class Manager implements Person {
-     name: string;
-     age: number;
-
-     constructor(name: string, age: number) {
-        this.name = name;
-        this.age = age;
-     }
-  
-     greet(phrase: string): void {
-         console.log("Hii there, sir", phrase);
-     }
-
-}
+//? ## Interfaces can be implemented by classes but types can not....
+//? ## and types let's you do some extra things like unions, intersections etc.
 
 
-
-class Employee implements Person {
-     name: string;
-     age: number;
-
-     constructor(name: string, age: number) {
-        this.name = name;
-        this.age = age;
-     }
-  
-     greet(phrase: string): void {
-         console.log("Hat ***", phrase);
-     }
-
-}
-
-
-
-
-
-
-
-
-
-// interface User {
-//     firstName: string;
-//     lastName: string;
-//     email: string;
+// type Person = {
+//     name: string;
 //     age: number;
 // }
 
-
-// function isLegel(user: User): boolean {
-//     if (user.age > 18) return true;
-//     return false;
-// }
-
-
-// let user1: User = {
-//     firstName: "Raj",
-//     lastName: "Kumar",
-//     email: "Rah@gmail.com",
+// let p1:Person = {
+//     name: "Rajkumar",
 //     age: 20
 // }
 
-// console.log(isLegel(user1));
+
+//? Unions in types
+type Pincode = string | number;    //! called Unions in types in ts
+
+let pincode: Pincode = "13add32"
+pincode = 198424
+
+
+//? Intersections
+// type Employee = {
+//     name: string;
+//     startDate: Date;
+// }
+
+// type Manager = {
+//     name: string;
+//     department: string;
+// }
+
+// type SuperManager = Employee & Manager;    
+
+//        //! OR
+
+// type SuperManager = {
+//     name: string;
+//     startDate: Date,
+//     department: string
+// }       
+
+
